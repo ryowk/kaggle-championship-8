@@ -1,0 +1,15 @@
+pandas
+matplotlib
+seaborn
+jupyterlab
+ipywidgets
+ipyplot
+jupytext
+jupyterlab-code-formatter
+isort
+black
+autopep8
+scikit-learn
+albumentations
+timm
+pytorch-lightning
