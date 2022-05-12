@@ -24,13 +24,13 @@ test_ratings['book_idx'] = test_ratings['book_id'].apply(lambda x: mp_books[x])
 for c in ['city', 'province', 'country']:
     tmp = users.groupby(c).size().reset_index(name='sz')
     tmp[f'{c}_idx'] = tmp['sz'].rank(ascending=False, method='first').astype(int) - 1
-    users = users.merge(tmp[[c, f'{c}_idx']], on=c)
+    users = users.merge(tmp[[c, f'{c}_idx']], on=c, how='left')
 
 
 for c in ['title', 'author', 'publisher']:
     tmp = books.groupby(c).size().reset_index(name='sz')
     tmp[f'{c}_idx'] = tmp['sz'].rank(ascending=False, method='first').astype(int) - 1
-    books = books.merge(tmp[[c, f'{c}_idx']], on=c)
+    books = books.merge(tmp[[c, f'{c}_idx']], on=c, how='left')
 
 
 books.to_csv('input/transformed/books.csv', index=False)
